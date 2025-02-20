@@ -5,12 +5,9 @@
   import email from "$lib/assets/email.svg";
   import heart from "$lib/assets/heart.svg";
   import { dev } from "$app/environment";
+  import { baseUrl, subdomain, domain, tld, securityLink, repo, contact } from "$lib/interfaceVars.js";
 
-  let baseUrl = import.meta.env.VITE_BASE_URL || "https://vanish.so";
-  let subdomain = import.meta.env.VITE_SITE_SUBDOMAIN;
-  let domain = import.meta.env.VITE_SITE_DOMAIN || "vanish";
-  let tld = import.meta.env.VITE_SITE_TLD || "so"
-  let mailto = import.meta.env.VITE_ADMIN_EMAIL;
+ // no clue what this does but it breaks rendering for me personally: inject({ mode: dev ? "development" : "production" });
 </script>
 
 <svelte:head>
@@ -63,8 +60,16 @@
       </h1>
     </a>
     <div class="flex items-center gap-6 text-primary font-medium text-sm">
+      {#if securityLink} <a 
+      href="{securityLink}" 
+      class="flex gap-2 items-center">
+        <img class="h-4 w-4" alt="security icon" src={security} />
+        <p class="hover:text-white transition-colors hidden sm:block">
+          security
+        </p>
+      </a> {/if}
       <a
-        href="https://github.com/bvvst/vanishso"
+        href="{repo}"
         class="flex gap-2 items-center"
       >
         <img class="h-4 w-4" alt="source icon" src={source} />
@@ -72,12 +77,14 @@
           source code
         </p>
       </a>
-      {#if mailto} <a href="mailto:{mailto}" class="flex gap-2 items-center">
+      {#if contact} <a 
+      href="{contact}" 
+      class="flex gap-2 items-center">
         <img class="h-4 w-4" alt="email icon" src={email} />
         <p class="hover:text-white transition-colors hidden sm:block">
           contact
         </p>
-      </a> {:else} {/if}
+      </a> {/if}
     </div>
   </div>
   <slot />
