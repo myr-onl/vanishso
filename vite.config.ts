@@ -5,6 +5,7 @@ export default defineConfig({
   plugins: [sveltekit()],  
   preview: {
     allowedHosts: ['sharepass.myr.haus'],
+    port: 4001
   },
 });
 

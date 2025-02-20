@@ -12,7 +12,6 @@
   "devDependencies": {
     "@sveltejs/adapter-node": "^1.0.0",
     "@sveltejs/kit": "^1.20.4",
-    "@types/better-sqlite3": "^7.6.12",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.30",
     "svelte": "^4.0.5",
